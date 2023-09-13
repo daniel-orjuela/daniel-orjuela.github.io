@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eclipse Web</title>
+  <link href="lib/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mb-5">
+    <h1>Elipse</h1>
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Seleccionar imagen</label>
+      <input type="file" id="formFile" class="form-control" accept="image/png, image/jpeg">
+    </div>
+    <div id="containerImage" class="d-none">
+      <h2>Resultado</h2>
+      <h5>Imagen seleccionada</h5>
+      <div id="imgSelectedContainer">
+      </div>
+      <h5 class="mt-5">Imagen Vectorizada</h5>
+      <div id="svgContainer">
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts-->
+  <script src="lib/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+  <script src="lib/jquery/jquery-3.7.1.min.js"></script>
+  <script src="lib/image-tracer/imagetracer_v1.2.6.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
