@@ -19,8 +19,14 @@ Frm = {
     $('#containerImage').removeClass('d-none');
   },
 
+  Vibration: function(){
+    let seconds = parseInt($('#txtSecondsVibration').val()) * 1000;
+    navigator.vibrate(seconds);
+  },
+
   Init: function(){
     $('#formFile').change(Frm.FileChange);
+    $('#btnVibration').click(Frm.Vibration)
   }
 };
 
