@@ -21,7 +21,7 @@ Frm = {
 
   Vibration: function(){
     let seconds = parseInt($('#txtSecondsVibration').val()) * 1000;
-    navigator.vibrate(seconds);
+    navigator.vibrate([seconds]);
   },
 
   Init: function(){
