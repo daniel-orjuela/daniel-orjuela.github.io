@@ -20,13 +20,14 @@ Frm = {
   },
 
   Vibration: function(){
-    let seconds = parseInt($('#txtSecondsVibration').val()) * 1000;
-    navigator.vibrate([seconds]);
+    // let seconds = parseInt($('#txtSecondsVibration').val()) * 1000;
+    navigator.vibrate(500);
+    alert("Vibrando...");
   },
 
   Init: function(){
     $('#formFile').change(Frm.FileChange);
-    $('#btnVibration').click(Frm.Vibration)
+    // $('#btnVibration').click(Frm.Vibration)
   }
 };
 
