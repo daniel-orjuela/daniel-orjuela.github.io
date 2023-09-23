@@ -1,20 +1,28 @@
 Frm = {
 
   FileChange: function(){
-    let file = $(this)[0].files[0];
-    let fr = new FileReader();
-    fr.onload = function(){
-      ImageTracer.imageToSVG(fr.result,
-        function(svgstr){
-          let htmlImage = `<img src="${fr.result}" />`;
-          $("#imgSelectedContainer").html(htmlImage);
-          $('#svgContainer').html(svgstr);
-        },'posterized2'
-      );
-    };
-    fr.readAsDataURL(file);
+    if($(this)[0].files.length){
+      $('#spinnerCarga').show();
+      let file = $(this)[0].files[0];
+      let fr = new FileReader();
+      
+      fr.onload = function(){
+        ImageTracer.imageToSVG(fr.result,
+          function(svgstr){
+            let htmlImage = `<img src='${fr.result}' style='max-width: 100%; height: auto;' />`;
+            let htmlImageSvg = `<img src='data:image/svg+xml,${svgstr}' style="max-width: 100%; height: auto;" />`;
+            
+            $("#imgSelectedContainer").html(htmlImage);
+            $('#svgContainer').html(htmlImageSvg);
 
-    $('#containerImage').removeClass('d-none');
+            $('#containerImage').removeClass('d-none');
+            $('#spinnerCarga').hide();
+          },'posterized2'
+        );
+      };
+
+      fr.readAsDataURL(file);
+    }
   },
 
   // Vibration: function(){

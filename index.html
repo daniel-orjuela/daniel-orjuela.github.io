@@ -6,41 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eclipse Web</title>
   <link href="lib/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    header {
-      height: 110px;
-    }
-
-    .custom-navbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #0052a5;
-    }
-
-    .container-logo {
-      width: 100%;
-      max-width: 100%;
-      padding-right: 40px;
-      padding-left: 40px;
-    }
-
-    .container-fechaHora {
-      background-color: white;
-    }
-
-    #logo-unicafam {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-    }
-
-    #txtFechaHora {
-      float: right;
-      font-weight: bold;
-    }
-  </style>
+  <link href="main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -66,7 +32,7 @@
     <div id="containerImage" class="d-none">
       <h2>Resultado</h2>
       <h5>Imagen seleccionada</h5>
-      <div id="imgSelectedContainer" class="w-100">
+      <div id="imgSelectedContainer">
       </div>
       <h5 class="mt-5">Imagen Vectorizada</h5>
       <div id="svgContainer">
@@ -82,6 +48,21 @@
         <button id="btnVibration" class="btn btn-primary">Vibrar</button>
       </div>
     </div> -->
+  </div>
+
+  <div id="spinnerCarga" class="spinner-container">
+    <div class="spinner-center bg-white p-3 rounded d-flex m-0">
+        <div class="row m-0">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="spinner-border spinner m-auto" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="fw-bold w-100 text-center m-0" style='font-family: "Arial"; color: #000;'>Cargando...</div>
+            </div>
+        </div>
+    </div>
   </div>
 
   <!-- Scripts-->
