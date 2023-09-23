@@ -10,6 +10,14 @@ header {
   background-color: #0052a5;
 }
 
+.custom-navbar2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
 .container-logo {
   width: 100%;
   max-width: 100%;
@@ -19,7 +27,7 @@ header {
 
 .container-datetime {
   position: absolute;
-  top: 105px;
+  top: 100px;
   background-color: white;
 }
 
