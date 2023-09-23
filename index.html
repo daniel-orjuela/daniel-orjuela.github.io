@@ -6,10 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eclipse Web</title>
   <link href="lib/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    header {
+      height: 100px;
+    }
+
+    .custom-navbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0052a5;
+    }
+
+    .container-menu {
+      width: 100%;
+      max-width: 100%;
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    #logo-unicafam {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="container mt-3 mb-5">
+  <header>
+    <nav class="custom-navbar fixed-top">
+      <div class="container-menu container-fluid">
+        <a href="https://www.unicafam.edu.co/">
+          <img id="logo-unicafam" src="./img/logo_unicafam.png" alt="Fundación Universitaria Cafam">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid mt-3 mb-5 px-5">
     <h1>Vectorizar imagen</h1>
     <div class="mb-3">
       <label for="formFile" class="form-label">Seleccionar imagen</label>
@@ -24,6 +60,7 @@
       <div id="svgContainer">
       </div>
     </div>
+    
     <!-- <h1>Vibración</h1>
     <div class="row mt-3">
       <div class="col-8 col-md-3">
