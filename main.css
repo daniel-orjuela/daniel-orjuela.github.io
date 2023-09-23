@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans',sans-serif;
+}
+
 header {
   height: 150px;
 }
@@ -10,6 +15,13 @@ header {
   background-color: #0052a5;
 }
 
+.container-logo {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
 .custom-navbar2 {
   display: flex;
   flex-wrap: wrap;
@@ -18,17 +30,10 @@ header {
   background-color: white;
 }
 
-.container-logo {
-  width: 100%;
-  max-width: 100%;
-  padding-right: 40px;
-  padding-left: 40px;
-}
-
 .container-datetime {
   position: absolute;
   top: 100px;
-  background-color: white;
+  padding-top: 10px;
 }
 
 #logo-unicafam {
@@ -43,28 +48,28 @@ header {
 }
 
 .spinner-container {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000001;
-    background: rgba(0,0,0,0.4);
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000001;
+  background: rgba(0,0,0,0.4);
 }
 
 .spinner-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .spinner {
-    margin-left: 20px;
-    color: #0052a5;
+  margin-left: 20px;
+  color: #0052a5;
 }
 
 #spinnerCarga * {
-    font-family: Arial;
+  font-family: 'Open Sans',sans-serif;
 }
