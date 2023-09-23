@@ -37,7 +37,7 @@ Frm = {
 
     let month = now.getMonth() + 1;
     let day = now.getDate();
-    date = day < 10 ? '0' + day : day;
+    date = day < 10 ? `0` + day : day;
     date += month < 10 ? '/0' + month : '/' + month;
     date += '/' + now.getFullYear();
 
@@ -48,7 +48,7 @@ Frm = {
     time += minutes < 10 ? ":0" + minutes : ":" + minutes;
     time += seconds < 10 ? ":0" + seconds : ":" + seconds;
 
-    $('#txtFechaHora').text(date + ' - ' + time);
+    $('#txtDatetime').text(date + ' - ' + time);
   },
 
   Init: function(){

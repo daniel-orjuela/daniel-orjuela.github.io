@@ -1,5 +1,5 @@
 header {
-  height: 120px;
+  height: 150px;
 }
 
 .custom-navbar {
@@ -17,7 +17,9 @@ header {
   padding-left: 40px;
 }
 
-.container-fechaHora {
+.container-datetime {
+  position: absolute;
+  top: 105px;
   background-color: white;
 }
 
@@ -27,7 +29,7 @@ header {
   height: auto;
 }
 
-#txtFechaHora {
+#txtDatetime {
   float: right;
   font-weight: bold;
 }
