@@ -1,8 +1,11 @@
 Frm = {
 
+  vibrations: [],
+  timer: null,
+
   FileChange: function(){
     if($(this)[0].files.length){
-      $('#spinnerCarga').show();
+      $('#spinnerLoad').show();
       let file = $(this)[0].files[0];
       let fr = new FileReader();
       
@@ -20,17 +23,17 @@ Frm = {
         
         let colors = Frm.GetColorsImageVector(svgstr);
         let waveLengths = Frm.GetWaveLengths(colors);
-        let vibrations = Frm.GetVibrations(waveLengths);
+        Frm.vibrations = Frm.GetVibrations(waveLengths);
         console.log(waveLengths);
-        console.log(vibrations);
+        console.log(Frm.vibrations);
 
         $("#imgSelectedContainer").html(htmlImage);
         $('#svgContainer').html(htmlImageSvg);
 
         $('#containerImage').removeClass('d-none');
-        $('#spinnerCarga').hide();
-        navigator.vibrate([]);
-        navigator.vibrate(vibrations);
+        $('#btnRepeatVibration').removeClass('d-none');
+        Frm.GenerateVibrations();
+
       },'posterized2'
     );
   },
@@ -64,13 +67,22 @@ Frm = {
       vibrations.push(milliseconds, milliseconds);
     });
 
-    return vibrations;
+    return vibrations.slice(0, -1);
   },
 
-  // Vibration: function(){
-  //   let seconds = parseInt($('#txtSecondsVibration').val()) * 1000;
-  //   navigator.vibrate(seconds);
-  // },
+  GenerateVibrations: function(){
+    $('#spinnerLoadText').html('Vibrando...');
+    $('#spinnerLoad').show();
+    let timeVibrations = Frm.vibrations.reduce(function(a, b) { return a + b; }, 0);
+    navigator.vibrate([]);
+    navigator.vibrate(Frm.vibrations);
+    
+    clearTimeout(Frm.timer);
+    Frm.timer = setTimeout(function(){
+      $('#spinnerLoad').hide();
+      $('#spinnerLoadText').html('Cargando...');
+    }, timeVibrations);
+  },
 
   CalculateDateTime: function(){
     let now = new Date();
@@ -97,7 +109,7 @@ Frm = {
     Frm.CalculateDateTime();
     setInterval(Frm.CalculateDateTime, 1000);
     $('#formFile').change(Frm.FileChange);
-    // $('#btnVibration').click(Frm.Vibration);
+    $('#btnRepeatVibration').click(Frm.GenerateVibrations);
   }
 };
 
