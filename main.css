@@ -78,3 +78,10 @@ header {
 .custom-text-justify {
   text-align: justify;
 }
+
+#btnRepeatVibration {
+  background-color: #0052a5;
+  font-weight: bold;
+  color: white;
+  font-size: 13px;
+}
