@@ -6,23 +6,65 @@ Frm = {
       let file = $(this)[0].files[0];
       let fr = new FileReader();
       
-      fr.onload = function(){
-        ImageTracer.imageToSVG(fr.result,
-          function(svgstr){
-            let htmlImage = `<img src='${fr.result}' style='max-width: 100%; height: auto;' />`;
-            let htmlImageSvg = `<img src='data:image/svg+xml,${svgstr}' style="max-width: 100%; height: auto;" />`;
-            
-            $("#imgSelectedContainer").html(htmlImage);
-            $('#svgContainer').html(htmlImageSvg);
-
-            $('#containerImage').removeClass('d-none');
-            $('#spinnerCarga').hide();
-          },'posterized2'
-        );
-      };
-
+      fr.onload = Frm.OnLoadImage;
       fr.readAsDataURL(file);
     }
+  },
+
+  OnLoadImage: function(){
+    let fr = this;
+    ImageTracer.imageToSVG(fr.result,
+      function(svgstr){
+        let htmlImage = `<img src='${fr.result}' style='max-width: 100%; height: auto;' />`;
+        let htmlImageSvg = `<img src='data:image/svg+xml,${svgstr}' style="max-width: 100%; height: auto;" />`;
+        
+        let colors = Frm.GetColorsImageVector(svgstr);
+        let waveLengths = Frm.GetWaveLengths(colors);
+        let vibrations = Frm.GetVibrations(waveLengths);
+        console.log(waveLengths);
+        console.log(vibrations);
+
+        $("#imgSelectedContainer").html(htmlImage);
+        $('#svgContainer').html(htmlImageSvg);
+
+        $('#containerImage').removeClass('d-none');
+        $('#spinnerCarga').hide();
+        navigator.vibrate([]);
+        navigator.vibrate(vibrations);
+      },'posterized2'
+    );
+  },
+
+  GetColorsImageVector: function(svgstr){
+    const regex = /rgb\([0-9]{0,3},[0-9]{0,3},[0-9]{0,3}\)/gm;
+    return svgstr.match(regex) ?? [];
+  },
+
+  GetWaveLengths: function(colors){
+    let waveLengths = [];
+    let waveLengthPrevious;
+    
+    colors.forEach((element) => { 
+      let color = element.replace(/[^0-9,]/g, ''); 
+      let resultColor = Utils.CalculateWaveLength(color);
+
+      if(waveLengthPrevious?.calculateColorWaveLength != resultColor.calculateColorWaveLength)
+        waveLengths.push(resultColor);
+
+      waveLengthPrevious = resultColor;
+    });
+    
+    return waveLengths;
+  },
+
+  GetVibrations: function(waveLengths){
+    let vibrations = [];
+    waveLengths.forEach((waveLength) => {
+      let milliseconds = waveLength.calculateColorWaveLength * 5;
+      vibrations.push(milliseconds, milliseconds);
+    });
+
+    return vibrations;
   },
 
   // Vibration: function(){
